@@ -25,6 +25,7 @@ before_install:
   if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     if [ "$TORCH" = "1.1.0" ]; then
       pip install https://download.pytorch.org/whl/cpu/torch-1.1.0-cp37-cp37m-linux_x86_64.whl
+      pip install future
     else
       pip install torch==1.3.1+cpu -f https://download.pytorch.org/whl/torch_stable.html --progress-bar off
     fi
