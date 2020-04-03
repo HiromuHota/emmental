@@ -1,6 +1,9 @@
 import logging
+from packaging import version
+import pytest
 import shutil
 
+import torch
 import torch.nn as nn
 
 import emmental
@@ -10,6 +13,10 @@ from emmental.learner import EmmentalLearner
 logger = logging.getLogger(__name__)
 
 
+@pytest.mark.skipif(
+    version.parse(torch.__version__) < version.parse("1.2.0"),
+    reason="at least torch-1.2.0 required",
+    )
 def test_adamw_optimizer(caplog):
     """Unit test of AdamW optimizer"""
 
