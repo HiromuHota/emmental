@@ -8,6 +8,10 @@ import torch
 import torch.optim as optim
 from numpy import ndarray
 from torch.optim.lr_scheduler import _LRScheduler
+try:
+    from optim.lr_scheduler import CosineAnnealingLR
+except ImportError:
+    from optim.lr_scheduler import CosineAnnealingLr as CosineAnnealingLR  # type: ignore
 
 from emmental import Meta
 from emmental.data import EmmentalDataLoader
@@ -118,7 +122,7 @@ class EmmentalLearner(object):
             "multi_step": optim.lr_scheduler.MultiStepLR,
             "cyclic": optim.lr_scheduler.CyclicLR,
             "one_cycle": optim.lr_scheduler.OneCycleLR,  # type: ignore
-            "cosine_annealing": optim.lr_scheduler.CosineAnnealingLR,
+            "cosine_annealing": CosineAnnealingLR,
         }
 
         opt = Meta.config["learner_config"]["lr_scheduler_config"]["lr_scheduler"]
