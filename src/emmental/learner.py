@@ -21,9 +21,9 @@ from emmental.utils.utils import construct_identifier, prob_to_pred
 try:
     from optim.lr_scheduler import CosineAnnealingLR
 except ImportError:
-    from optim.lr_scheduler import (
+    from optim.lr_scheduler import (  # type: ignore
         CosineAnnealingLr as CosineAnnealingLR,
-    )  # type: ignore
+    )
 
 
 try:
