@@ -39,7 +39,7 @@ install:
 
 script:
 - travis_wait 50 coverage run --source=emmental -m pytest tests
-- mypy src
+- if [ ! "$TORCH" = "1.1" ]; then mypy src; fi
 
 after_success:
 - coveralls
