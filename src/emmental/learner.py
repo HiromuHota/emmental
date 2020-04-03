@@ -8,10 +8,6 @@ import torch
 import torch.optim as optim
 from numpy import ndarray
 from torch.optim.lr_scheduler import _LRScheduler
-try:
-    from optim.lr_scheduler import CosineAnnealingLR
-except ImportError:
-    from optim.lr_scheduler import CosineAnnealingLr as CosineAnnealingLR  # type: ignore
 
 from emmental import Meta
 from emmental.data import EmmentalDataLoader
@@ -21,6 +17,14 @@ from emmental.optimizers.bert_adam import BertAdam
 from emmental.schedulers import SCHEDULERS
 from emmental.schedulers.scheduler import Scheduler
 from emmental.utils.utils import construct_identifier, prob_to_pred
+
+try:
+    from optim.lr_scheduler import CosineAnnealingLR
+except ImportError:
+    from optim.lr_scheduler import (
+        CosineAnnealingLr as CosineAnnealingLR,
+    )  # type: ignore
+
 
 try:
     from IPython import get_ipython
