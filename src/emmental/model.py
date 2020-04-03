@@ -277,7 +277,7 @@ class EmmentalModel(nn.Module):
                 active = torch.BoolTensor([True] * Y.size()[0])  # type: ignore
 
             # Only calculate the loss when active example exists
-            if active.any():
+            if any(active):
                 uid_dict[task_name] = [*itertools.compress(uids, active.numpy())]
 
                 loss_dict[task_name] = self.loss_funcs[task_name](
