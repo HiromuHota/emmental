@@ -14,7 +14,6 @@ check:
 	black tests/ --check
 	flake8 src/
 	flake8 tests/
-	mypy src/
 
 format:
 	isort -rc src/
