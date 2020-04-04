@@ -19,9 +19,9 @@ from emmental.schedulers.scheduler import Scheduler
 from emmental.utils.utils import construct_identifier, prob_to_pred
 
 try:
-    from optim.lr_scheduler import CosineAnnealingLR
+    from torch.optim.lr_scheduler import CosineAnnealingLR
 except ImportError:
-    from optim.lr_scheduler import (  # type: ignore
+    from torch.optim.lr_scheduler import (  # type: ignore
         CosineAnnealingLr as CosineAnnealingLR,
     )
 
